@@ -79,6 +79,10 @@ Todo o ciclo de desenvolvimento validado com sucesso. Todas as entregas das cama
 
 ![alt text](image/MER.png)
 
+## Diagrama de Classes UML
+
+![alt text](image/UML-GestaoAcademica.png)
+
 ## Protótipo da Interface Gráfica do Sistema
 
 ![alt text](image/PrototipoUI.png)
