@@ -7,10 +7,6 @@ import service.CursoService;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * SRP: contém apenas regras de negócio para Curso.
- * DIP: depende de CursoDao via injeção no construtor.
- */
 public class CursoServiceImpl implements CursoService {
 
     private final CursoDao cursoDao;

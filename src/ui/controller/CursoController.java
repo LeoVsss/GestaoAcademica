@@ -7,10 +7,6 @@ import ui.panel.CursoPanel;
 import javax.swing.*;
 import java.util.List;
 
-/**
- * SRP: orquestra eventos de UI do painel de Curso.
- * DIP: depende de CursoService (interface), não de implementação concreta.
- */
 public class CursoController {
 
     private final CursoService service;
@@ -23,21 +19,16 @@ public class CursoController {
         carregarTabela();
     }
 
-    // ─── Registro de eventos ─────────────────────────────────────────────────
-
     private void registrarEventos() {
         panel.btnSalvar.addActionListener(e    -> onSalvar());
         panel.btnAtualizar.addActionListener(e -> onAtualizar());
         panel.btnExcluir.addActionListener(e   -> onExcluir());
         panel.btnLimpar.addActionListener(e    -> panel.limparFormulario());
 
-        // Seleção na tabela preenche o formulário
         panel.table.getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()) onSelecionarLinha();
         });
     }
-
-    // ─── Handlers ────────────────────────────────────────────────────────────
 
     private void onSalvar() {
         try {
@@ -96,8 +87,6 @@ public class CursoController {
         int codigo = (int) panel.tableModel.getValueAt(row, 0);
         service.buscarPorId(codigo).ifPresent(panel::preencherFormulario);
     }
-
-    // ─── Utilitários ─────────────────────────────────────────────────────────
 
     public void carregarTabela() {
         panel.tableModel.setRowCount(0);

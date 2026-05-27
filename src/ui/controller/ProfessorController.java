@@ -10,10 +10,6 @@ import javax.swing.*;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-/**
- * SRP: orquestra eventos de UI do painel de Professor.
- * DIP: depende de ProfessorService e CursoService (interfaces).
- */
 public class ProfessorController {
 
     private final ProfessorService professorService;

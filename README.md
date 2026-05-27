@@ -72,3 +72,15 @@ Todo o ciclo de desenvolvimento validado com sucesso. Todas as entregas das cama
 
 <img width="1186" height="624" alt="Captura de tela 2026-05-25 160823" src="https://github.com/user-attachments/assets/fdd1aec9-988f-4ee9-812a-08afc4849996" />
 
+
+
+
+## MER do Banco de Dados
+
+![alt text](image/MER.png)
+
+## Protótipo da Interface Gráfica do Sistema
+
+![alt text](image/PrototipoUI.png)
+
+

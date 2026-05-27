@@ -23,7 +23,6 @@ public class Disciplina {
         this.curso               = curso;
     }
 
-    // Backward-compat constructor (3 args professor only)
     public Disciplina(Integer numeroDisciplina, String nomeDisciplina,
                       Date dataInicio, Date dataEncerramento, Professor professorResponsavel) {
         this(numeroDisciplina, nomeDisciplina, dataInicio, dataEncerramento, professorResponsavel, null);

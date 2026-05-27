@@ -13,9 +13,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-/**
- * SRP: apenas responsável pelo layout e componentes visuais de Disciplina.
- */
 public class DisciplinaPanel extends JPanel {
 
     private static final String DATE_PATTERN = "dd/MM/yyyy";
@@ -69,7 +66,6 @@ public class DisciplinaPanel extends JPanel {
         fields.setBackground(UITheme.SURFACE);
         GridBagConstraints gbc = defaultGbc();
 
-        // Coluna esquerda e direita com 2 colunas de dados
         addLabelField(fields, gbc, 0, 0, "Nº (auto):",        txtNumero);
         addLabelField(fields, gbc, 0, 2, "Curso:",            cbCurso);
         addLabelField(fields, gbc, 1, 0, "Nome:",             txtNome);

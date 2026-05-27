@@ -14,12 +14,6 @@ import ui.util.UITheme;
 
 import javax.swing.*;
 
-/**
- * Ponto de entrada da aplicação.
- *
- * Composição de dependências (DIP):
- *   Connection → DAO → Service → Controller (injeção via construtor em cada camada).
- */
 public class Main {
 
     public static void main(String[] args) {
@@ -27,20 +21,16 @@ public class Main {
 
         SwingUtilities.invokeLater(() -> {
             try {
-                // Camada de infraestrutura
                 DbConnection connection = new PostgreConnection();
 
-                // DAOs
                 CursoDao      cursoDao      = new CursoDao(connection);
                 ProfessorDao  professorDao  = new ProfessorDao(connection);
                 DisciplinaDao disciplinaDao = new DisciplinaDao(connection);
 
-                // Serviços (interface ← implementação)
                 CursoService      cursoService      = new CursoServiceImpl(cursoDao);
                 ProfessorService  professorService  = new ProfessorServiceImpl(professorDao);
                 DisciplinaService disciplinaService = new DisciplinaServiceImpl(disciplinaDao);
 
-                // UI — recebe apenas interfaces de serviço
                 MainFrame frame = new MainFrame(cursoService, professorService, disciplinaService);
                 frame.setVisible(true);
 

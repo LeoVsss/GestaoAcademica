@@ -14,10 +14,6 @@ import ui.util.UITheme;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * SRP: responsável apenas pela montagem da janela principal.
- * DIP: recebe serviços via construtor — sem dependência de implementações concretas.
- */
 public class MainFrame extends JFrame {
 
     private final CursoController      cursoController;
@@ -33,17 +29,14 @@ public class MainFrame extends JFrame {
         setMinimumSize(new Dimension(900, 650));
         setPreferredSize(new Dimension(1100, 750));
 
-        // Painéis
         CursoPanel      cursoPanel      = new CursoPanel();
         ProfessorPanel  professorPanel  = new ProfessorPanel();
         DisciplinaPanel disciplinaPanel = new DisciplinaPanel();
 
-        // Controllers — wireup de eventos e carga inicial
         cursoController      = new CursoController(cursoService, cursoPanel);
         professorController  = new ProfessorController(professorService, cursoService, professorPanel);
         disciplinaController = new DisciplinaController(disciplinaService, professorService, cursoService, disciplinaPanel);
 
-        // Layout principal
         JPanel root = new JPanel(new BorderLayout());
         root.setBackground(UITheme.SURFACE);
         root.add(buildHeader(),            BorderLayout.NORTH);
@@ -54,8 +47,6 @@ public class MainFrame extends JFrame {
         pack();
         setLocationRelativeTo(null);
     }
-
-    // ─── Cabeçalho ───────────────────────────────────────────────────────────
 
     private JPanel buildHeader() {
         JPanel header = new JPanel(new BorderLayout());
@@ -80,8 +71,6 @@ public class MainFrame extends JFrame {
         return header;
     }
 
-    // ─── Abas ────────────────────────────────────────────────────────────────
-
     private JTabbedPane buildTabs(CursoPanel cursoPanel,
                                    ProfessorPanel professorPanel,
                                    DisciplinaPanel disciplinaPanel) {
@@ -93,7 +82,6 @@ public class MainFrame extends JFrame {
         tabs.addTab("Professores",  wrapTab(professorPanel));
         tabs.addTab("Disciplinas",  wrapTab(disciplinaPanel));
 
-        // Recarregar combos ao trocar de aba (garantia de dados frescos)
         tabs.addChangeListener(e -> {
             int idx = tabs.getSelectedIndex();
             if (idx == 1) professorController.carregarComboCurso();
@@ -109,8 +97,6 @@ public class MainFrame extends JFrame {
         sp.getVerticalScrollBar().setUnitIncrement(16);
         return sp;
     }
-
-    // ─── Barra de status ─────────────────────────────────────────────────────
 
     private JPanel buildStatusBar() {
         JPanel bar = new JPanel(new FlowLayout(FlowLayout.LEFT, 12, 4));

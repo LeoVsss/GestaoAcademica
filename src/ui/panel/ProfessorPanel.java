@@ -12,9 +12,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-/**
- * SRP: apenas responsável pelo layout e componentes visuais de Professor.
- */
 public class ProfessorPanel extends JPanel {
 
     private static final String DATE_PATTERN = "dd/MM/yyyy";

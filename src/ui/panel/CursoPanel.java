@@ -7,24 +7,17 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-/**
- * SRP: apenas responsável pelo layout e componentes visuais de Curso.
- * Não contém lógica de negócio — delega ao CursoController.
- */
 public class CursoPanel extends JPanel {
 
-    // Campos do formulário
     public final JTextField txtCodigo      = UITheme.createTextField();
     public final JTextField txtNome        = UITheme.createTextField();
     public final JTextArea  txtDescricao   = UITheme.createTextArea(3, 20);
 
-    // Botões de ação
     public final JButton btnSalvar    = UITheme.createButton("Salvar",     UITheme.SUCCESS);
     public final JButton btnAtualizar = UITheme.createButton("Atualizar",  UITheme.WARNING);
     public final JButton btnExcluir   = UITheme.createButton("Excluir",    UITheme.DANGER);
     public final JButton btnLimpar    = UITheme.createButton("Limpar",     UITheme.TEXT_MUTED);
 
-    // Tabela
     public final DefaultTableModel tableModel;
     public final JTable table;
 
@@ -55,7 +48,6 @@ public class CursoPanel extends JPanel {
         addLabelField(fields, gbc, 0, "Código:",    txtCodigo);
         addLabelField(fields, gbc, 1, "Nome:",      txtNome);
 
-        // Descrição ocupa duas linhas
         gbc.gridy = 2; gbc.gridx = 0; gbc.anchor = GridBagConstraints.NORTHWEST;
         fields.add(makeLabel("Descrição:"), gbc);
         gbc.gridx = 1; gbc.fill = GridBagConstraints.BOTH; gbc.weighty = 1.0;
@@ -82,8 +74,6 @@ public class CursoPanel extends JPanel {
         return p;
     }
 
-    // ─── helpers ────────────────────────────────────────────────────────────
-
     private GridBagConstraints defaultGbc() {
         GridBagConstraints g = new GridBagConstraints();
         g.insets = new Insets(4, 4, 4, 4);
@@ -105,25 +95,21 @@ public class CursoPanel extends JPanel {
         return l;
     }
 
-    /** Preenche o formulário com dados de um curso selecionado. */
     public void preencherFormulario(Curso c) {
         txtCodigo.setText(c.getCodCurso() != null ? String.valueOf(c.getCodCurso()) : "");
         txtNome.setText(c.getNomeCurso() != null ? c.getNomeCurso() : "");
         txtDescricao.setText(c.getDescCurso() != null ? c.getDescCurso() : "");
     }
 
-    /** Limpa todos os campos do formulário. */
     public void limparFormulario() {
         txtCodigo.setText(""); txtNome.setText(""); txtDescricao.setText("");
         table.clearSelection();
     }
 
-    /** Retorna o código digitado ou -1 se inválido. */
     public int getCodigo() {
         try { return Integer.parseInt(txtCodigo.getText().trim()); }
         catch (NumberFormatException e) { return -1; }
     }
 
-    /** Retorna o índice da linha selecionada na tabela. */
     public int getSelectedRow() { return table.getSelectedRow(); }
 }

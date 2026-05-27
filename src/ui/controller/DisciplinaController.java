@@ -12,10 +12,6 @@ import javax.swing.*;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-/**
- * SRP: orquestra eventos de UI do painel de Disciplina.
- * DIP: depende de interfaces de serviço.
- */
 public class DisciplinaController {
 
     private final DisciplinaService disciplinaService;
