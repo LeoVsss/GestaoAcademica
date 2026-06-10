@@ -40,4 +40,8 @@ public class Disciplina {
     public void      setProfessorResponsavel(Professor v){ this.professorResponsavel = v; }
     public Curso     getCurso()                          { return curso; }
     public void      setCurso(Curso v)                   { this.curso = v; }
+
+    public boolean validarDataInicio() {
+        return dataInicio != null && dataEncerramento != null && dataInicio.before(dataEncerramento);
+    }
 }

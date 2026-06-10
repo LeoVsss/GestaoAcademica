@@ -47,12 +47,8 @@ public class DisciplinaServiceImpl implements DisciplinaService {
     private void validar(Disciplina d) {
         if (d.getNomeDisciplina() == null || d.getNomeDisciplina().isBlank())
             throw new IllegalArgumentException("Nome da disciplina é obrigatório.");
-        if (d.getDataInicio() == null)
-            throw new IllegalArgumentException("Data de início é obrigatória.");
-        if (d.getDataEncerramento() == null)
-            throw new IllegalArgumentException("Data de encerramento é obrigatória.");
-        if (d.getDataInicio().after(d.getDataEncerramento()))
-            throw new IllegalArgumentException("Data de início deve ser anterior ao encerramento.");
+        if (!d.validarDataInicio())
+            throw new IllegalArgumentException("Data de início e encerramento são obrigatórias, e a data de início deve ser anterior ao encerramento.");
         if (d.getProfessorResponsavel() == null)
             throw new IllegalArgumentException("Professor responsável é obrigatório.");
         if (d.getCurso() == null)
